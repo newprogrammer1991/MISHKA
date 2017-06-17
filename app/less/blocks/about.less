@@ -1,0 +1,58 @@
+.about {
+    margin-bottom: 60px;
+}
+.about__container{
+    .container();
+}
+
+.about__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.about__item {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 30px;
+    font-family: Verdana;
+    font-weight: bold;
+}
+
+.about__item svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 37px;
+    fill: #63d1bb;
+}
+
+
+@media screen and @tablet-width {
+    .about__items {
+        .clearfix()
+    }
+
+    .about__item {
+        width: 50%;
+        float: left;
+        padding-right: 20px;
+        text-align: left;
+        font-family: Verdana;
+        font-weight: bold;
+        font-size: 20px;
+        box-sizing: border-box;
+    }
+
+}
+
+@media screen and @desktop-width {
+    .about {
+        padding-left:175px;
+    }
+
+    .about__item {
+        width: 39%;
+    }
+}

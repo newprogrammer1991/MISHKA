@@ -1,0 +1,63 @@
+.drawer {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    right: 0;
+    background-color: @light-yellow-green;
+    transform: translateX(300px);
+    transition: all .5s cubic-bezier(0.46, 0.01, 0.32, 1);
+    button {
+        position: absolute;
+        right: 20px;
+        top: 8px;
+        border: none;
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        outline: none;
+        background-color: transparent;
+        cursor: pointer;
+        cursor: pointer;
+    }
+}
+
+.drawer__icon {
+    display: block;
+    width: 7px;
+    height: 10px;
+    border: 2px solid @green-dark;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+
+}
+
+.drawer__description {
+    padding-top: 15px;
+    text-align: center;
+
+}
+
+.is-moved-by-drawer {
+    transition: all .5s cubic-bezier(0.46, 0.01, 0.32, 1);
+}
+
+.js-open-right {
+    overflow: hidden;
+    .drawer {
+        transform: translateX(0);
+    }
+    .is-moved-by-drawer {
+        transform: translateX(-300px);
+    }
+
+}
+
+///*.drawer--open {
+//    transform: translateX(0);
+//}
+//
+//.is-transitionend {
+//    transform: translateX(-300px);
+//
+//}*/
+

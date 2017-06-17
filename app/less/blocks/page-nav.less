@@ -1,0 +1,231 @@
+.page-nav {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.page-nav__items, .page-nav__user-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.page-nav__user-item {
+    position: relative;
+    svg {
+        position: absolute;
+        top: 33px;
+        left: 31px;
+        cursor: pointer;
+
+    }
+    &:hover {
+        svg {
+            fill: @hover-fill;
+        }
+    }
+}
+
+.page-nav__item, .page-nav__user-item {
+    border-top: 1px solid @borders-color;
+}
+
+.page-nav__item--hidden {
+    display: none;
+}
+
+.page-nav__link {
+    display: block;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 75px;
+    cursor: pointer;
+    text-decoration: none;
+    color: @black;
+    &:hover {
+        opacity: @hover-gray-dark;
+    }
+    &:active {
+        opacity: @active-gray-light;
+    }
+}
+
+.page-nav__input-search {
+    .btn();
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 75px;
+    text-align: inherit;
+    border: none;
+    color: @gray-darken;
+    text-transform: none;
+    &:hover {
+        opacity: @hover-gray-dark;
+    }
+}
+
+.page-nav__input-search::placeholder {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: @font-size;
+    line-height: 1.5;
+    font-weight: bold;
+    color: @black;
+    text-transform: none;
+    transition-property: color;
+    transition-duration: 0.4s;
+}
+
+.page-nav__input-search:focus::placeholder {
+    color: transparent;
+}
+
+.page-nav--closed .page-nav__hamburger-menu {
+    position: absolute;
+    top: 33px;
+    right: 30px;
+    z-index: 10;
+    width: 21px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    &::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: @black;
+        box-shadow: 0 5px 0, 0 -5px 0;
+    }
+}
+
+.page-nav--closed .page-nav__items, .page-nav--closed .page-nav__user-items {
+    display: none;
+
+}
+
+.page-nav--open .page-nav__hamburger-menu {
+    position: absolute;
+    right: 44px;
+    top: 38px;
+    cursor: pointer;
+    width: 5px;
+    background-color: green;
+    &::before, &::after {
+        content: "";
+        position: absolute;
+        width: 21px;
+        height: 2px;
+        background-color: #000000;
+    }
+    &::before {
+        transform: rotate(45deg);
+    }
+    &::after {
+        transform: rotate(-45deg);
+    }
+
+}
+
+@media screen and @tablet-width {
+    .page-nav {
+        .clearfix();
+    }
+
+    .page-nav__hamburger-menu {
+        display: none;
+    }
+
+    .page-nav--closed .page-nav__items, .page-nav--closed .page-nav__user-items {
+        display: block;
+
+    }
+
+    .page-nav__item, .page-nav__user-item {
+        border-top: none;
+    }
+
+    .page-nav__items {
+        position: absolute;
+        left: 0;
+        z-index: 10;
+    }
+
+    .page-nav__user-items {
+        position: absolute;
+        right: 0;
+        top: -21px;
+    }
+
+    .page-nav__user-item, .page-nav__item {
+        display: inline-block;
+    }
+
+    .page-nav__item--hidden {
+        display: none;
+    }
+
+    .page-nav__user-item {
+        border-left: 1px solid @borders-color;
+        .page-nav__link {
+            padding-top: 34px;
+            padding-bottom: 35px;
+        }
+    }
+
+    .page-nav__user-item:nth-of-type(1) {
+        padding-top: 34px;
+        padding-bottom: 35px;
+        padding-left: 31px;
+        padding-right: 31px;
+        svg {
+            position: static;
+        }
+    }
+
+    .page-nav__item {
+        .page-nav__link {
+            padding: 0;
+            padding-top: 22px;
+            padding-right: 35px;
+            font-size: @font-size-text;
+
+        }
+    }
+
+    .page-nav__form-search {
+        display: none;
+    }
+}
+
+@media screen and @desktop-width {
+    .page-nav__items, .page-nav__user-items {
+        position: static;
+    }
+
+    .page-nav__items {
+        width: 440px;
+        float: left;
+    }
+
+    .page-nav__user-items {
+        width: 350px;
+        float: right;
+    }
+
+    .page-nav__form-search {
+        display: none;
+    }
+
+    .page-nav__item {
+        .page-nav__link {
+            padding-top: 34px;
+            padding-bottom: 35px;
+        }
+    }
+
+    .page-nav__item {
+        .page-nav__link-catalog, .page-nav__link-knitting {
+            font-size: @font-size;
+        }
+    }
+
+}
