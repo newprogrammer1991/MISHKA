@@ -130,7 +130,11 @@ gulp.task('build', function (fn) {
     run('clean', 'symbols', 'images', 'fonts', 'js', 'less', 'html', 'serve', fn);
 });
 
-gulp.task('default', ['build']);
+gulp.task('default', ['build'],function () {
+    if(isProduction){
+        gulp.start('deploy');
+    }
+});
 
 
 

@@ -4,3 +4,4 @@ node_modules/
 .idea
 .editorconfig
 app/img/symbols.svg
+.publish/
