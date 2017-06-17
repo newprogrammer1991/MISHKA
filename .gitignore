@@ -3,4 +3,4 @@ tmp/
 node_modules/
 .idea
 .editorconfig
-app/img/symbols
+app/img/symbols.svg
