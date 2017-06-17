@@ -74,6 +74,7 @@ gulp.task('less', function () {
                 })
             ]
         ))
+        .pipe(gulp.dest(path.join(srcPath,'css')))
         .pipe(gulp.dest(path.join(buildPath, '/css')))
 });
 
