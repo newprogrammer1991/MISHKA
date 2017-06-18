@@ -78,7 +78,7 @@ gulp.task('less', function () {
                 })
             ]
         ))
-        .pipe(gulp.dest(path.join(srcPath, 'css')))
+        .pipe(gulpIf(!isProduction, gulp.dest(path.join(srcPath, 'css'))))
         .pipe(gulp.dest(path.join(buildPath, '/css')))
 });
 
@@ -105,7 +105,7 @@ gulp.task("images", function () {
 
 gulp.task('js', function () {
     return gulp.src('**/*.js', {cwd: srcPath})
-        .pipe(gulpIf(isProduction,f))
+        .pipe(gulpIf(isProduction, f))
         .pipe(gulpIf(!isProduction, babel({presets: ['es2015']})))
         .pipe(gulp.dest(buildPath))
 });
