@@ -4,5 +4,5 @@ node_modules/
 .idea
 .editorconfig
 app/img/symbols.svg
-app/css/style.css
 .publish/
+.app/css
