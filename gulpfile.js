@@ -25,7 +25,7 @@ var cache = require('gulp-cache');
 var combine = require('stream-combiner2');
 var babel = require('gulp-babel');
 var filter = require('gulp-filter');
-
+var cheerio = require('gulp-cheerio');
 
 var isProduction = !!argv.production;
 var buildPath = isProduction ? 'build' : 'tmp';
@@ -86,6 +86,12 @@ gulp.task('less', function () {
 gulp.task('symbols', function () {
     return gulp.src('**/*.svg', {cwd: path.join(srcPath, 'img/icons-svg')})
         .pipe(svgmin())
+        .pipe(cheerio({
+            run: function ($) {
+                $('[fill]').removeAttr('fill');
+            },
+            parserOptions: {xmlMode: true}
+        }))
         .pipe(svgstore({
             inlineSvg: true
         }))
