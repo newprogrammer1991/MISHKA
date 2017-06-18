@@ -23,11 +23,15 @@ var concat = require('gulp-concat');
 var argv = require('minimist')(process.argv.slice(2));
 var cache = require('gulp-cache');
 var combine = require('stream-combiner2');
-var lazypipe = require('lazypipe');
 var babel = require('gulp-babel');
+var filter = require('gulp-filter');
+
+
 var isProduction = !!argv.production;
 var buildPath = isProduction ? 'build' : 'tmp';
 var srcPath = 'app/';
+
+var f = filter('**/lib/*.js');
 
 gulp.task('deploy', function () {
     return gulp.src('**/*', {cwd: buildPath})
@@ -74,7 +78,7 @@ gulp.task('less', function () {
                 })
             ]
         ))
-        .pipe(gulp.dest(path.join(srcPath,'css')))
+        .pipe(gulp.dest(path.join(srcPath, 'css')))
         .pipe(gulp.dest(path.join(buildPath, '/css')))
 });
 
@@ -101,7 +105,8 @@ gulp.task("images", function () {
 
 gulp.task('js', function () {
     return gulp.src('**/*.js', {cwd: srcPath})
-        .pipe(gulpIf(isProduction, babel({presets: ['es2015']})))
+        .pipe(gulpIf(isProduction,f))
+        .pipe(gulpIf(!isProduction, babel({presets: ['es2015']})))
         .pipe(gulp.dest(buildPath))
 });
 
@@ -131,8 +136,8 @@ gulp.task('build', function (fn) {
     run('clean', 'symbols', 'images', 'fonts', 'js', 'less', 'html', 'serve', fn);
 });
 
-gulp.task('default', ['build'],function () {
-    if(isProduction){
+gulp.task('default', ['build'], function () {
+    if (isProduction) {
         gulp.start('deploy');
     }
 });
